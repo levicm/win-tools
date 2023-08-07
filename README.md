@@ -1,4 +1,4 @@
-# win10script
+# WinTools
 This Windows Scripts is a creation from multiple debloat scripts and gists from github. The main origin was a Chris Titus repo. I also added other tools to the script that I install on every machine I use.
 
 ## Modifications
@@ -20,6 +20,10 @@ To do all tweaks, debloats and installations you just have to run the win-tools.
 * **install-media-apps.ps1**: Instalation of some media apps (VLC, BSPlayer);
 
 Copy and paste this line on a PowerShell screen with admin rights, press ENTER and all the magic will be done:
+```
+iex (irm https://raw.githubusercontent.com/levicm/win-tools/master/win-tools.ps1);
+```
+If you have problems with the command aove, try to copy and paste this line on a PowerShell screen with admin rights, press ENTER and all the magic will be done:
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/levicm/win10script/master/prepare-windows.ps1'));
 ```
