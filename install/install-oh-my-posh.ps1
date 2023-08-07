@@ -1,7 +1,20 @@
-
+# Install Lastest PowerShell
 winget install Microsoft.PowerShell
+# Install OhMyPosh
 winget install JanDeDobbeleer.OhMyPosh -s winget
+# Install CacadiaCode Nerd Fonts
 oh-my-posh font install CascadiaCode
-New-Item -Path $PROFILE -Type File -Force
-Write-Output "oh-my-posh init pwsh | Invoke-Expression" > $PROFILE
+# Install better Terminal Icons
+Install-Module -Name Terminal-Icons -Repository PSGallery
+# If there is a Profile, do a backup
+if ( Test-Path -Path $PROFILE -PathType Leaf ) {
+    $PROFILE_BAK = $PROFILE + ".bak" 
+    Move-Item -Path $PROFILE -Destination $PROFILE_BAK
+}
+# Download a GitHub Profile to be a new PowerShell Profile
+Invoke-WebRequest https://raw.githubusercontent.com/levicm/win-tools/master/powershell/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
+
+# Create a new simple profile
+#New-Item -Path $PROFILE -Type File -Force
+#Write-Output "oh-my-posh init pwsh | Invoke-Expression" > $PROFILE
 
