@@ -114,8 +114,9 @@ Function EssentialTweaks {
     Write-Host "Enabling Ultimate Performance Power Plan..."
     powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61    
 
+    Write-Host ""
     Write-Host "Enabling Windows Update on powerShell..."
-    Install-Module PSWindowsUpdate
+    Install-Module PSWindowsUpdate -force
     Add-WUServiceManager -MicrosoftUpdate
 
     # Windows 11 section
