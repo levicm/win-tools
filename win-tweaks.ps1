@@ -255,17 +255,8 @@ Function DisableScheduledTasks {
     }    
 }
 
-Function UninstallMSEdgeWebView2 {
-    Write-Output "Uninstalling Windows 11 Edge Web View..."
-    if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
-        winget uninstall "Microsoft Edge WebView2 Runtime"
-    }
-}
-
-
 # Main function invocation
 CreateRestorePoint;
 EssentialTweaks;
 DisableServices;
 DisableScheduledTasks;
-UninstallMSEdgeWebView2;
