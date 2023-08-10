@@ -65,11 +65,14 @@ Function DebloatMS {
         Write-Host "Trying to remove $Bloat."
     }
     if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
+        Write-Output "Uninstalling MSTeams..."
         winget uninstall "Microsoft.Teams"
         winget uninstall "Microsoft Teams"
+        Write-Output "Uninstalling XBox..."
         winget uninstall "Xbox"
+        Write-Output "Uninstalling Windows 11 Edge Web View..."
+        winget uninstall "Microsoft Edge WebView2 Runtime"
     }
-
 }
 
 Function DebloatThirdParty {
