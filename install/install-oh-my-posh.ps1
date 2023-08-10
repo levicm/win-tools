@@ -1,5 +1,3 @@
-# Install Lastest PowerShell
-winget install Microsoft.PowerShell
 # Install OhMyPosh
 winget install JanDeDobbeleer.OhMyPosh -s winget
 # Install CacadiaCode Nerd Fonts
