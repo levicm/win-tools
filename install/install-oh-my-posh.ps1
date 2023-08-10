@@ -6,6 +6,8 @@ winget install JanDeDobbeleer.OhMyPosh -s winget
 oh-my-posh font install CascadiaCode
 # Install better Terminal Icons
 Install-Module -Name Terminal-Icons -Repository PSGallery
+# Install PSReadLine, a code completion tool
+Install-Module  PSReadLine
 # If there is a Profile, do a backup
 if ( Test-Path -Path $PROFILE -PathType Leaf ) {
     $PROFILE_BAK = $PROFILE + ".bak" 
