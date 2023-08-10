@@ -67,6 +67,7 @@ Function DebloatMS {
     if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
         winget uninstall "Microsoft.Teams"
         winget uninstall "Microsoft Teams"
+        winget uninstall "Xbox"
     }
 
 }
@@ -103,6 +104,7 @@ Function DebloatThirdParty {
         "*HiddenCity*"
         "*AdobePhotoshopExpress*"
         "*Disney*"
+        "Clipchamp.Clipchamp*"
     )
     Write-Host "Debloating Third Apps..."
     foreach ($Bloat in $Bloatware) {
