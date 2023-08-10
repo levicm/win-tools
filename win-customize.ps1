@@ -2,7 +2,7 @@ Function Customize {
     Write-Host "Showing task manager details..."
     $taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
     If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager")) {
-        New-Item -Path ""HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Force | Out-Null
+        New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Force | Out-Null
     }
     Do {
         Start-Sleep -Milliseconds 100
