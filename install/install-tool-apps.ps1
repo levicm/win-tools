@@ -1,7 +1,7 @@
-choco install -y speedtest
-choco install -y etcher
-choco install -y scrcpy
-choco install -y ccleaner
-choco install -y hwinfo
-#choco install -y virtualbox
-#choco install -y vmware-workstation-player
+winget install Ookla.Speedtest.CLI --disable-interactivity --silent
+#winget install Balena.Etcher --disable-interactivity --silent
+#winget install Genymobile.scrcpy --disable-interactivity --silent
+#winget install Piriform.CCleaner --disable-interactivity --silent
+#winget install REALiX.HWiNFO --disable-interactivity --silent
+#winget install Oracle.VirtualBox --disable-interactivity --silent
+#winget install VMware.WorkstationPlayer --disable-interactivity --silent
