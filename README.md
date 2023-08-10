@@ -12,11 +12,11 @@ To do all tweaks, debloats and installations you just have to run the win-all.ps
 * **win-debloat.ps1**: uninstall Microsoft and third-party bloatwares;
 * **win-enable-features.ps1**: enable Windows optional features such as Hyper-V and WSL; 
 * **win-install.ps1**: Instalation of Chocolatey Package Manager and:
-** **install-essential-apps.ps1**: Instalation of some essential apps (windows-terminal, autohotkey, GoogleChrome, Firefox, NotepadPlusPlus, FoxitReader, Adobereader, 7zip,  Bitwarden, powertoys);
-** **install-tool-apps.ps1**: Instalation of some tool apps (virtualbox, vmware-workstation-player, etcher, scrcpy, ccleaner, hwinfo, speedtest, ext2fsd);
-** **install-office-apps.ps1**: Instalation of some office apps (MS Office 365, LibreOffice);
-** **install-dev-apps.ps1**: Instalation of some develop apps (VS Code, Eclipse);
-** **install-media-apps.ps1**: Instalation of some media apps (VLC, BSPlayer);
+  * **install-essential-apps.ps1**: Instalation of some essential apps (windows-terminal, autohotkey, GoogleChrome, Firefox, NotepadPlusPlus, FoxitReader, Adobereader, 7zip,  Bitwarden, powertoys);
+  * **install-tool-apps.ps1**: Instalation of some tool apps (virtualbox, vmware-workstation-player, etcher, scrcpy, ccleaner, hwinfo, speedtest, ext2fsd);
+  * **install-office-apps.ps1**: Instalation of some office apps (MS Office 365, LibreOffice);
+  * **install-dev-apps.ps1**: Instalation of some develop apps (VS Code, Eclipse);
+  * **install-media-apps.ps1**: Instalation of some media apps (VLC, BSPlayer);
 
 Copy and paste this line on a PowerShell screen with admin rights, press ENTER and all the magic will be done:
 ```
