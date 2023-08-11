@@ -21,7 +21,7 @@ if (Test-Path -Path $powertoysPath) {
     Write-Host "PowerToys found!"
 } else {
     Write-Host "PowerToys not found! Installing..."
-    choco install -y PowerToys
+    winget install Microsoft.PowerToys --disable-interactivity --silent
 }
 
 # Install Everything
@@ -29,7 +29,7 @@ if (Test-Path -Path $everythingPath) {
     Write-Host "Everything found!"
 } else {
     Write-Host "Everything not found! Installing..."
-    choco install -y everything
+    winget install voidtools.Everything --disable-interactivity --silent
 }
 
 # Create temp destination for the zip
