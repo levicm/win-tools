@@ -1,5 +1,5 @@
 # URL and Destination
-$pluginUrl = "https://github.com/lin-ycv/EverythingPowerToys/releases/download/v0.63.0/Everything-0.63.0-x64.zip"
+$pluginUrl = "https://github.com/lin-ycv/EverythingPowerToys/releases/download/v0.72.0/Everything-0.72.0-x64.zip"
 # Extract path
 $extractPath = "c:\temp\"
 # Get zipfile name from source URL
@@ -8,16 +8,12 @@ $zipFile = $extractPath + $(Split-Path -Path $pluginUrl -Leaf)
 $everythingPath = "C:\Program Files\Everything\"
 # Powertoys path
 $powertoysPath = "C:\Program Files\PowerToys\"
-# Powertoys plugins path
-$powertoysPluginsPath = $powertoysPath + "modules\launcher\Plugins\"
-$pluginFolderName = "Everything"
-$sourceFolder = $extractPath + $pluginFolderName
-$destFolder = $powertoysPluginsPath + $pluginFolderName
+$powertoysLocalPath = "$($env:LOCALAPPDATA)\PowerToys\"
 
 Write-Host "Install Everything plugin on PowerToys Run..."
 
 # Install Powertoys
-if (Test-Path -Path $powertoysPath) {
+if (Test-Path -Path $powertoysPath) -OR (Test-Path -Path $powertoysLocalPath) {
     Write-Host "PowerToys found!"
 } else {
     Write-Host "PowerToys not found! Installing..."
@@ -49,5 +45,19 @@ $extractedFiles = $ObjShell.NameSpace($zipFile).Items()
 # Copy the extracted files to the destination folder
 $ObjShell.NameSpace($extractPath).CopyHere($extractedFiles)
 
-Write-Host "Coping files from " $sourceFolder "to" $destFolder "..."
-Copy-Item -Force $sourceFolder $destFolder
+if (Test-Path -Path $powertoysLocalPath) {
+    $powertoysPath = $powertoysLocalPath
+}
+
+if (Test-Path -Path $powertoysPath) {
+    # Powertoys plugins path
+    $powertoysPluginsPath = $powertoysPath + "modules\launcher\Plugins\"
+    $pluginFolderName = "Everything"
+    $sourceFolder = $extractPath + $pluginFolderName
+    $destFolder = $powertoysPluginsPath + $pluginFolderName
+    
+    Write-Host "Coping files from " $sourceFolder "to" $destFolder "..."
+    Copy-Item -Force $sourceFolder $destFolder
+} else {
+    Write-Host "PowerToys path not found!!"
+}
