@@ -1,4 +1,4 @@
-choco install -y office365proplus
-choco install -y libreoffice-fresh
-choco install -y cutepdf
-choco install -y pdfsam
+winget install Microsoft.Office --disable-interactivity --silent
+winget install TheDocumentFoundation.LibreOffice --disable-interactivity --silent
+winget install AcroSoftware.CutePDFWriter --disable-interactivity --silent
+winget install PDFsam.PDFsam --disable-interactivity --silent
