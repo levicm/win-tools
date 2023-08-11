@@ -51,7 +51,7 @@ if (Test-Path -Path $powertoysLocalPath) {
 
 if (Test-Path -Path $powertoysPath) {
     # Powertoys plugins path
-    $powertoysPluginsPath = $powertoysPath + "modules\launcher\Plugins\"
+    $powertoysPluginsPath = $powertoysPath + "RunPlugins\"
     $pluginFolderName = "Everything"
     $sourceFolder = $extractPath + $pluginFolderName
     $destFolder = $powertoysPluginsPath + $pluginFolderName
