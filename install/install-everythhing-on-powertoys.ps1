@@ -13,7 +13,7 @@ $powertoysLocalPath = "$($env:LOCALAPPDATA)\PowerToys\"
 Write-Host "Install Everything plugin on PowerToys Run..."
 
 # Install Powertoys
-if (Test-Path -Path $powertoysPath) -OR (Test-Path -Path $powertoysLocalPath) {
+if ((Test-Path -Path $powertoysPath) -OR (Test-Path -Path $powertoysLocalPath)) {
     Write-Host "PowerToys found!"
 } else {
     Write-Host "PowerToys not found! Installing..."
