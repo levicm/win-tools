@@ -1,4 +1,4 @@
-Write-Host "Installing Wiget..."
+Write-Host "Installing Winget..."
 iex (irm https://raw.githubusercontent.com/levicm/win-tools/master/install/install-winget.ps1);
 
 Write-Host "Debloat..."
