@@ -1,5 +1,5 @@
 # URL and Destination
-$pluginUrl = "https://github.com/lin-ycv/EverythingPowerToys/releases/download/v0.72.0/Everything-0.72.0-x64.zip"
+$pluginUrl = "https://github.com/lin-ycv/EverythingPowerToys/releases/download/v0.73.0/Everything-0.73.0-x64.zip"
 # Extract path
 $extractPath = "c:\temp\"
 # Get zipfile name from source URL
@@ -57,7 +57,7 @@ if (Test-Path -Path $powertoysPath) {
     $destFolder = $powertoysPluginsPath + $pluginFolderName
     
     Write-Host "Coping files from " $sourceFolder "to" $destFolder "..."
-    Copy-Item -Force $sourceFolder $destFolder
+    Copy-Item -Path $sourceFolder -Destination $destFolder -Recurse -Force
 } else {
     Write-Host "PowerToys path not found!!"
 }
