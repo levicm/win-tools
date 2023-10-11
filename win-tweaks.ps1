@@ -212,13 +212,18 @@ Function DisableServices {
 	
 	foreach ($service in $services) {
 		# -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
-		$thisService = Get-Service -Name $service
-		Write-Host Service $thisService.Name '('$thisService.DisplayName')' is in $thisService.StartType mode
-		if ($thisService.StartType -eq 'Automatic') {
-			Write-Host "Stopping $service"...
-			Stop-Service "$service" -WarningAction SilentlyContinue -ErrorAction SilentlyContinue
-			Write-Host "Setting $service StartupType to Manual"...
-			Set-Service "$service"  -ErrorAction SilentlyContinue -StartupType Manual
+		$thisService = Get-Service -Name $service -ErrorAction SilentlyContinue
+		if ($null -eq $thisService) {
+			Write-Host "Service $service not found!"
+		}
+		else {
+			Write-Host Service $thisService.Name '('$thisService.DisplayName')' is in $thisService.StartType mode
+			if ($thisService.StartType -eq 'Automatic') {
+				Write-Host "Stopping $service"...
+				Stop-Service "$service" -WarningAction SilentlyContinue -ErrorAction SilentlyContinue
+				Write-Host "Setting $service StartupType to Manual"...
+				Set-Service "$service"  -ErrorAction SilentlyContinue -StartupType Manual
+			}
 		}
 	}
 
