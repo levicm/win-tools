@@ -208,8 +208,12 @@ Function DisableServices {
 		#"vmicshutdown"
 		#"vmictimesync"
 		#"vmicvmsession"
-		"AdobeARMservice"                           # Adobe Acrobat Update Service
-		"FoxitReaderUpdateService"                           # Foxit PDF Reader Update Service
+		"AdobeARMservice"                             # Adobe Acrobat Update Service
+		"FoxitReaderUpdateService"                    # Foxit PDF Reader Update Service
+		"StateRepository"                             # State Repository Service
+		"StorSvc"                                     # Storage Service
+		"WpnService"                                  # Windows Push Notifications System S...
+        
 	)
 	
 	foreach ($service in $services) {
