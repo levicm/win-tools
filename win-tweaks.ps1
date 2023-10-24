@@ -132,6 +132,10 @@ Function EssentialTweaks {
         New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge" -Force | Out-Null
     }
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge" -Name "AllowPrelaunch" -Type DWord -Value 0
+
+    Write-Host "Uninstalling Edge and WebView2..."
+    curl.exe -s "https://raw.githubusercontent.com/AveYo/fox/main/Edge_Removal.bat" -o edgeremoval.bat
+    Start-Process edgeremoval.bat
 }
 
 Function DisableServices {

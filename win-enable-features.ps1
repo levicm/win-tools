@@ -1,5 +1,8 @@
 Function EnableOptionalFeatures {
-    Write-Output "Enabling Virtual MAchine Platform..."
+    Write-Output "Enabling Telnet Client..."
+    Enable-WindowsOptionalFeature -Online -All -NoRestart -FeatureName TelnetClient
+
+    Write-Output "Enabling Virtual Machine Platform..."
     Enable-WindowsOptionalFeature -Online -All -NoRestart -FeatureName VirtualMachinePlatform
 
     Write-Output "Enabling Hyper-V..."
