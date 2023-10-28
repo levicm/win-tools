@@ -70,9 +70,14 @@ Function DebloatMS {
         winget uninstall "Microsoft Teams"
         Write-Output "Uninstalling XBox..."
         winget uninstall "Xbox"
-        Write-Output "Uninstalling Windows 11 Edge Web View..."
-        winget uninstall "Microsoft Edge WebView2 Runtime"
+        # Webview seems to be used by programs like Citrix
+        #Write-Output "Uninstalling Windows 11 Edge Web View..."
+        #winget uninstall "Microsoft Edge WebView2 Runtime"
     }
+
+    #Write-Host "Uninstalling Edge..."
+    #curl.exe -s "https://raw.githubusercontent.com/AveYo/fox/main/Edge_Removal.bat" -o edge_removal.bat
+    #Start-Process edge_removal.bat
 }
 
 Function DebloatThirdParty {
