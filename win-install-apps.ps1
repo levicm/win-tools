@@ -1,5 +1,7 @@
 Write-Host "Installing Chocolatey..."
-iex (irm https://chocolatey.org/install.ps1);
+Set-ExecutionPolicy Bypass -Scope Process -Force; 
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
 
 Write-Host "Installing Essential Apps..."
 iex (irm https://raw.githubusercontent.com/levicm/win-tools/master/install/install-essential-apps.ps1);
