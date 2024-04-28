@@ -1,5 +1,5 @@
 # URL and Destination
-$pluginUrl = "https://github.com/lin-ycv/EverythingPowerToys/releases/download/v0.73.0/Everything-0.73.0-x64.zip"
+$pluginUrl = "https://github.com/lin-ycv/EverythingPowerToys/releases/download/v0.80.0/EverythingPT-0.80.0-x64.zip"
 # Extract path
 $extractPath = "c:\temp\"
 # Get zipfile name from source URL
