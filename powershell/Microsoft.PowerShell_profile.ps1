@@ -6,4 +6,3 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\jandedobbeleer.omp.json" | 
 Import-Module Terminal-Icons
 # Code completion
 Import-Module PSReadLine
-ReadLineOption -PredictionViewStyle ListView
