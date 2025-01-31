@@ -23,4 +23,6 @@ if (Test-Path -Path $everythingPath) {
 }
 
 # Install Everything PowerToys Plugin
-winget install lin-ycv.EverythingPowerToys --disable-interactivity --silent
+# winget installation of plugin deprecated
+# winget install lin-ycv.EverythingPowerToys --disable-interactivity --silent
+choco install EverythingPowerToys
