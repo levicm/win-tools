@@ -1,5 +1,5 @@
 # WinTools
-This Windows Scripts is a creation from multiple debloat scripts and gists from github. The main origin was a Chris Titus repo. I also added other tools to the script that I install on every machine I use.
+This Windows scripts toolkit is a creation from multiple debloat scripts and gists from github. The main origin was a Chris Titus repo. I also added other tools to the script that I install on every machine I use.
 
 ## Modifications
 I encourage people to fork this project and comment out things they don't like! 
