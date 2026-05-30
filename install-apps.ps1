@@ -1,6 +1,10 @@
+Write-Host "Enabling Windows Update via PowerShell..."
+Install-Module PSWindowsUpdate -Force
+Add-WUServiceManager -MicrosoftUpdate
+
 Write-Host "Installing Chocolatey..."
-Set-ExecutionPolicy Bypass -Scope Process -Force; 
-[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; 
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'));
 
 Write-Host "Installing Essential Apps..."

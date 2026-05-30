@@ -1,6 +1,6 @@
 Function DebloatMS {
     $Bloatware = @(
-        #Unnecessary Windows 10 AppX Apps
+        #Unnecessary Windows 10/11 AppX Apps
         "Microsoft.Teams"
         "Microsoft.3DBulder"
         "Microsoft.AppConnector"
@@ -59,22 +59,22 @@ Function DebloatMS {
     )
     Write-Host "Debloating MS Apps..."
     foreach ($Bloat in $Bloatware) {
-        Get-AppxPackage -Name $Bloat| Remove-AppxPackage
-        Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
-        Get-AppxPackage -AllUsers -Name $Bloat| Remove-AppxPackage
+        $pkg = Get-AppxPackage -Name $Bloat -ErrorAction SilentlyContinue
+        if ($pkg) { $pkg | Remove-AppxPackage -ErrorAction SilentlyContinue }
+        Get-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+        $pkgAll = Get-AppxPackage -AllUsers -Name $Bloat -ErrorAction SilentlyContinue
+        if ($pkgAll) { $pkgAll | Remove-AppxPackage -ErrorAction SilentlyContinue }
         Write-Host "Trying to remove $Bloat."
     }
-    if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
+    if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe) {
         Write-Output "Uninstalling MSTeams..."
         winget uninstall "Microsoft.Teams"
         winget uninstall "Microsoft Teams"
         Write-Output "Uninstalling XBox..."
         winget uninstall "Xbox"
-        # Webview seems to be used by programs like Citrix
         #Write-Output "Uninstalling Windows 11 Edge Web View..."
         #winget uninstall "Microsoft Edge WebView2 Runtime"
     }
-
     #Write-Host "Uninstalling Edge..."
     #curl.exe -s "https://raw.githubusercontent.com/AveYo/fox/main/Edge_Removal.bat" -o edge_removal.bat
     #Start-Process edge_removal.bat
@@ -82,8 +82,7 @@ Function DebloatMS {
 
 Function DebloatThirdParty {
     $Bloatware = @(
-        #Sponsored Windows 10 AppX Apps
-        #Add sponsored/featured apps to remove in the "*AppName*" format
+        #Sponsored Windows 10/11 AppX Apps
         "*EclipseManager*"
         "*ActiproSoftwareLLC*"
         "*AdobeSystemsIncorporated.AdobePhotoshopExpress*"
@@ -114,14 +113,26 @@ Function DebloatThirdParty {
         "*Disney*"
         "Clipchamp.Clipchamp*"
     )
-    Write-Host "Debloating Third Apps..."
+    Write-Host "Debloating Third-party Apps..."
     foreach ($Bloat in $Bloatware) {
-        Get-AppxPackage -Name $Bloat| Remove-AppxPackage
-        Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
-        Get-AppxPackage -AllUsers -Name $Bloat| Remove-AppxPackage
+        $pkg = Get-AppxPackage -Name $Bloat -ErrorAction SilentlyContinue
+        if ($pkg) { $pkg | Remove-AppxPackage -ErrorAction SilentlyContinue }
+        Get-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
+        $pkgAll = Get-AppxPackage -AllUsers -Name $Bloat -ErrorAction SilentlyContinue
+        if ($pkgAll) { $pkgAll | Remove-AppxPackage -ErrorAction SilentlyContinue }
         Write-Host "Trying to remove $Bloat."
     }
 }
 
-DebloatMS;
-DebloatThirdParty;
+Function DebloatWidgets {
+    Write-Host "Removing Widgets (Win11)..."
+    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
+    if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe) {
+        Write-Host "Uninstalling Widgets package..."
+        winget uninstall "Windows web experience pack"
+    }
+}
+
+DebloatMS
+DebloatThirdParty
+DebloatWidgets
